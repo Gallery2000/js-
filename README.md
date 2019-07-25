@@ -4,7 +4,7 @@
 
 # 预览
 
-https://frankfang.github.io/wheels/
+https://Gallery2000.github.io/wheel/
 
 # 如何阅读源代码
 
