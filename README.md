@@ -4,7 +4,7 @@
 
 # 预览
 
-https://Gallery2000.github.io/wheel/
+http://wheel2.ldynb.com
 
 # 如何阅读源代码
 
