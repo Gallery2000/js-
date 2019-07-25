@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>image-packer</title>
+    <style>
+        body{background: #362256;}
+        .wrapper{
+            background: white;
+            width: 20em;
+            height: 80vh;
+            box-shadow: 0 0 5px hsla(0,0%,0%,0.95);
+            border-radius: 2px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-top: 3em;
+            flex-direction: column;
+            margin: 60px auto;
+        }
+        .image-packer{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+        .image-packer:hover::after{
+            content:'编辑'; background: hsla(0,0%,0%,0.2);
+        }
+        .image-packer.uploading::after{
+            content:'上传中'; background: hsla(0,0%,0%,0.2);
+        }
+        .image-packer.downloading::after{
+            content:'处理中'; background: hsla(0,0%,0%,0.2);
+        }
+        .image-packer.failedupload::after{
+            content:'上传失败'; background: hsla(0,0%,0%,0.2);
+        }
+        .image-packer.faileddownload::after{
+            content:'下载失败'; background: hsla(0,0%,0%,0.2);
+        }
+        .image-packer::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            box-shadow: inset 0 0 5px hsla(264, 46%, 23%, 0.5);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .image-packer>input[type=file]{
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 300%;
+            height: 100%;
+            z-index: 1;
+            cursor: pointer;
+            opacity: 0;
+        }
+        .image-packer img{
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .upload-tips{
+
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="image-packer">
+            <img src="https://avatars0.githubusercontent.com/u/839559" alt="">
+        </div>
+        <p class="upload-tips">点击图片编辑</p>
+    </div>
+    <script src="../lib/dom/index.js"></script>
+    <script src="../lib/image-picker/index.js"></script>
+    <script>
+    new ImagePicker({
+        element:document.querySelector('.image-packer'),
+        upload:{
+            url:'http://wheel.ldynb.com/upload',
+            methods:'PUT',
+            inputName:'file'
+        },
+        parseResponse:(response)=>{
+            return response;
+        },
+        fallbackImage:'https://avatars0.githubusercontent.com/u/839559'
+    })
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Tabs</title>
+    <style>
+      body {
+        background: #e2ded3;
+      }
+      ul{margin: 0;padding: 0;}
+      li{list-style: none;}
+      .tabs-wrapper {
+        background: repeating-linear-gradient(
+          -45deg,
+          #d7d3c7,
+          #d7d3c7 2px,
+          #cecabe 2px,
+          #cecabe 4px
+        );
+        box-sizing: border-box;
+        width: 460px;
+        padding: 8px;
+        margin: 100px auto 0;
+      }
+      .tabs{
+          background-color: #fff;
+            
+      }
+      .tabs-nav{
+          display: flex;
+      }
+      .tabs-nav li{
+        flex: 1;
+        text-align: center;
+        padding: 20px;
+        background: linear-gradient(to bottom, #e5dfd3 0%,#d0c9b8 100%);
+        text-shadow: 1px 1px 1px white;
+        box-shadow: 0 0 2px hsla(0, 0, 0%, .15)
+        
+      }
+      .tabs-nav li.active{
+          box-shadow: none;
+          background: linear-gradient(to bottom, white 0%,#F0EDE6 100%);
+          color: #222;
+      }
+      .tabs-panes{
+          background: #F0EDE6;
+      }
+      .tabs-panes .tabs-nav-item{
+        display: none;
+        overflow: hidden;
+      }
+      .tabs-panes .tabs-nav-item.active{
+          display: block;
+      }
+      .tabs-panes .tabs-nav-item .circle{
+          width: 80px;
+          height: 80px;
+          color: #222;
+          background: #DFDCD3;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          font-size: 28px;
+          margin: 5em auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tabs-wrapper">
+      <div class="tabs">
+        <ul class="tabs-nav">
+          <li>选项卡-1</li>
+          <li>选项卡-1</li>
+        </ul>
+        <ul class="tabs-panes">
+          <li class="tabs-nav-item">
+              <div class="circle">1</div>
+          </li>
+          <li class="tabs-nav-item">
+                <div class="circle">2</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="../lib/dom/index.js"></script>
+    <script src="../lib/tabs/index.js"></script>
+    <script>
+        new Tabs({element:document.querySelector('.tabs')})
+    </script>
+  </body>
+</html>
